@@ -1,7 +1,7 @@
 async function getData(){
   const records = await fetch(`https://dummyjson.com/users`)
-  const data = records.json().then(res => {
-   //console.log(res)
+   records.json().then(res => {
+ 
   let tab = '';
    res.users.forEach(function(user){
           tab += `<tr>
@@ -12,7 +12,7 @@ async function getData(){
              <td>${user.gender}</td>
          </tr>
       `
-     // console.log(tab)
+     
    document.getElementById('tbody').innerHTML = tab;
    
  })
@@ -21,16 +21,4 @@ async function getData(){
   console.log(err)
 })
   
-$('#userTable').DataTable({
-   "data": res.users,
-   "cloumns":[
-    {'data' : 'firstName'},
-    {'data' : 'lastName'},
-    {'data' : 'age'},
-    {'data' : 'email'},
-    {'data' : 'gender'}
-
-   ]
-})
-
 }
